@@ -14,8 +14,7 @@ public class Report {
                 if (!dictionary.contains(human.getName())) {
                     dictionary.add(human.getName());
                     String str = "  ";
-                    writer.write(str);
-                    writer.append(human.getName() + "\n");
+                    writer.write(str + human.getName() + "\n");
                     if (human.getServants() != null) {
                         List<Human> servants = human.getServants();
                         printLevelServant(servants, writer, str, humanList, dictionary);
@@ -33,11 +32,10 @@ public class Report {
         for (Human servant : servants) {
             if (!dictionary.contains(servant.getName())) {
                 dictionary.add(servant.getName());
-                writer.write(str);
-                writer.append(servant.getName() + "\n");
-                int a = humanList.indexOf(servant);
-                if (a > 0) {
-                    Human servantNewLevel = humanList.get(a);
+                writer.write(str + servant.getName() + "\n");
+                int indexHumanList = humanList.indexOf(servant);
+                if (indexHumanList > 0) {
+                    Human servantNewLevel = humanList.get(indexHumanList);
                     if (servantNewLevel.getServants() != null) {
                         List<Human> servantsNewLevel = servantNewLevel.getServants();
                         printLevelServant(servantsNewLevel, writer, str, humanList, dictionary);
