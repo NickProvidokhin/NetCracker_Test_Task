@@ -4,11 +4,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Hierarchy {
+    private static String PATH = "src\\main\\resources\\population.txt";
     public static List<String> fileProcessing() {
         List<String> list = new LinkedList<>();
         try {
-            String path = "src\\main\\resources\\population.txt";
-            File file = new File(path);
+            File file = new File(PATH);
             FileReader fr = new FileReader(file);
             BufferedReader reader = new BufferedReader(fr);
             String line = reader.readLine();

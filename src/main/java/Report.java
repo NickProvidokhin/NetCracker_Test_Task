@@ -4,22 +4,18 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Report {
+    private static String PATH = "src\\main\\resources\\report.txt";
 
     public static void printReport(List<Human> humanList) {
-        String path = "src\\main\\resources\\report.txt";
-        try (FileWriter writer = new FileWriter(path, false)) {
-            String text = "Король:";
-            writer.write(text);
-            writer.append('\n');
+        try (FileWriter writer = new FileWriter(PATH, false)) {
+            writer.write("Король:\n");
             List<String> dictionary = new LinkedList<>();
-            for (int i = 0; i < humanList.size(); i++) {
-                Human human = humanList.get(i);
+            for (Human human : humanList) {
                 if (!dictionary.contains(human.getName())) {
                     dictionary.add(human.getName());
                     String str = "  ";
                     writer.write(str);
-                    writer.append(human.getName());
-                    writer.append('\n');
+                    writer.append(human.getName() + "\n");
                     if (human.getServants() != null) {
                         List<Human> servants = human.getServants();
                         printLevelServant(servants, writer, str, humanList, dictionary);
@@ -38,8 +34,7 @@ public class Report {
             if (!dictionary.contains(servant.getName())) {
                 dictionary.add(servant.getName());
                 writer.write(str);
-                writer.append(servant.getName());
-                writer.append('\n');
+                writer.append(servant.getName() + "\n");
                 int a = humanList.indexOf(servant);
                 if (a > 0) {
                     Human servantNewLevel = humanList.get(a);

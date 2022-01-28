@@ -13,7 +13,7 @@ public class Human {
 
     public Human(String name) {
         this.name = name;
-        servants = null;
+        this.servants = null;
     }
 
     public void setName(String name) {
