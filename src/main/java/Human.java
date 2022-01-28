@@ -3,17 +3,12 @@ import java.util.List;
 import java.util.Objects;
 
 public class Human {
-    String name;
-    List<Human> servants;
+    private String name;
+    private List<Human> servants;
 
     public Human(String name, List<Human> servants) {
         this.name = name;
         this.servants = servants;
-    }
-
-    public Human() {
-        this.name = null;
-        this.servants = null;
     }
 
     public Human(String name) {

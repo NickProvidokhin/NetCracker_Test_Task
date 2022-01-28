@@ -4,10 +4,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Hierarchy {
-    static List<String> fileProcessing() {
+    public static List<String> fileProcessing() {
         List<String> list = new LinkedList<>();
         try {
-            File file = new File("src\\main\\resources\\population.txt");
+            String path = "src\\main\\resources\\population.txt";
+            File file = new File(path);
             FileReader fr = new FileReader(file);
             BufferedReader reader = new BufferedReader(fr);
             String line = reader.readLine();
@@ -15,35 +16,33 @@ public class Hierarchy {
                 list.add(line);
                 line = reader.readLine();
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return list;
     }
 
-    static List<Human> createHierarchy(List<String> list) {
-        List<Human> listOfHuman = new LinkedList<>();
+    public static List<Human> createHierarchy(List<String> list) {
+        List<Human> humanList = new LinkedList<>();
         for (String str : list) {
             if (str.contains(":")) {
-                List<Human> listOfNamesServants = new LinkedList<>();
+                List<Human> servantsList = new LinkedList<>();
                 String[] names = str.split(":");
                 List<Human> servants = new LinkedList<>();
                 names[1].trim();
-                String[] namesOfServants = names[1].split(",");
-                Arrays.sort(namesOfServants);
-                for (String namesOfServant : namesOfServants) {
+                String[] servantNames = names[1].split(",");
+                Arrays.sort(servantNames);
+                for (String namesOfServant : servantNames) {
                     Human servant = new Human(namesOfServant.trim());
-                    listOfNamesServants.add(servant);
+                    servantsList.add(servant);
                 }
-                Human human = new Human(names[0], listOfNamesServants);
-                listOfHuman.add(human);
+                Human human = new Human(names[0], servantsList);
+                humanList.add(human);
             } else {
                 Human human = new Human(str);
-                listOfHuman.add(human);
+                humanList.add(human);
             }
         }
-        return listOfHuman;
+        return humanList;
     }
 }
