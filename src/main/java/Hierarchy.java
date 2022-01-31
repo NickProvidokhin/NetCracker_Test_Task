@@ -17,7 +17,6 @@ public class Hierarchy {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        list.sort(Comparator.naturalOrder());
         return list;
     }
 
