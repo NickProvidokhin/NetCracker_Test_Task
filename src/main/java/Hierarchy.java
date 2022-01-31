@@ -1,7 +1,5 @@
 import java.io.*;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Hierarchy {
     private static String PATH = "src\\main\\resources\\population.txt";
@@ -19,6 +17,7 @@ public class Hierarchy {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        list.sort(Comparator.naturalOrder());
         return list;
     }
 
@@ -42,6 +41,7 @@ public class Hierarchy {
                 Human human = new Human(str);
                 humanList.add(human);
             }
+
         }
         return humanList;
     }

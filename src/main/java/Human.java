@@ -2,7 +2,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-public class Human {
+public class Human implements Comparable<Human> {
     private String name;
     private List<Human> servants;
 
@@ -43,5 +43,10 @@ public class Human {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public int compareTo(Human o) {
+        return name.compareTo(o.getName());
     }
 }
